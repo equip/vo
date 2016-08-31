@@ -5,10 +5,7 @@ approve_regex: '^:\+1:'
 reject_regex: '^:\-1:'
 reviewers:
     -
-        name: stack
+        name: core
         required: 1
-        members:
-            - ameech
-            - dolfelt
-            - shadowhand
-            - elazar
+        teams:
+            - contributors
