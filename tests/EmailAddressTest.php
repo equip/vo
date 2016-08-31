@@ -14,6 +14,14 @@ class EmailAddressTest extends TestCase
         $this->assertSame($email, $vo->value());
     }
 
+    public function testNotRequired()
+    {
+        $email = '';
+        $vo = new EmailAddress($email, false);
+
+        $this->assertNull($vo->value());
+    }
+
     public function dataInvalid()
     {
         return [
