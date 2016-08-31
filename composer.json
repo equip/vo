@@ -12,6 +12,12 @@
     "require": {
         "php": ">=5.5"
     },
+    "require-dev": {
+        "giggsey/libphonenumber-for-php": "^7.6"
+    },
+    "suggest": {
+        "giggsey/libphonenumber-for-php": "Required to use phone number values."
+    },
     "autoload": {
         "psr-4": {
             "Equip\\ValueObject\\": "src/"
