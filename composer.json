@@ -1,6 +1,6 @@
 {
-    "name": "equip/:package",
-    "description": ":description",
+    "name": "equip/vo",
+    "description": "Simple self-validating value objects",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -13,16 +13,16 @@
         "php": ">=5.5"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.8|^5.0"
+        "phpunit/phpunit": "^4.8 || ^5.0"
     },
     "autoload": {
         "psr-4": {
-            "Equip\\:namespace\\": "src/"
+            "Equip\\ValueObject\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "EquipTests\\:namespace\\": "tests/"
+            "Equip\\ValueObject\\": "tests/"
         }
     }
 }
