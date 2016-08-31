@@ -4,22 +4,21 @@ namespace Equip\ValueObject;
 
 use InvalidArgumentException;
 
+use function Assert\that;
+
 class Text
 {
+    /**
+     * @var string|null
+     */
     private $value;
 
     public function __construct($value, $regex = null)
     {
-        if ($value === null) {
-            $value = '';
-        }
+        $assert = that($value)->nullOr()->string();
 
-        if (!is_string($value)) {
-            throw new InvalidArgumentException('Value must be a string');
-        }
-
-        if ($regex && !preg_match($regex, $value)) {
-            throw new InvalidArgumentException('Value must match the expected format');
+        if ($regex) {
+            $assert->regex($regex);
         }
 
         $this->value = $value;

@@ -4,6 +4,8 @@ namespace Equip\ValueObject;
 
 use InvalidArgumentException;
 
+use function Assert\that;
+
 class EmailAddress
 {
     /**
@@ -13,13 +15,13 @@ class EmailAddress
 
     public function __construct($email, $is_required = true)
     {
-        static $empty_values = [null, ''];
+        $assert = that($email);
 
-        if (!$is_required && in_array($email, $empty_values, true)) {
-            $email = null;
-        } elseif (filter_var($email, \FILTER_VALIDATE_EMAIL) === false) {
-            throw new InvalidArgumentException('Value must be an email address');
+        if (!$is_required) {
+            $assert->nullOr();
         }
+
+        $assert->scalar()->email();
 
         $this->email = $email;
     }

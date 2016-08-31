@@ -25,7 +25,7 @@ class TextTest extends TestCase
     public function testValid($text, $regex)
     {
         $vo = new Text($text, $regex);
-        $this->assertSame((string) $text, $vo->value());
+        $this->assertSame($text, $vo->value());
     }
 
     public function dataInvalidFormat()

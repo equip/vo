@@ -10,7 +10,8 @@
         }
     ],
     "require": {
-        "php": ">=5.5"
+        "php": ">=5.5",
+        "beberlei/assert": "^2.6"
     },
     "require-dev": {
         "giggsey/libphonenumber-for-php": "^7.6"

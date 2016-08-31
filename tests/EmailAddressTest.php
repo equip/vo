@@ -16,7 +16,7 @@ class EmailAddressTest extends TestCase
 
     public function testNotRequired()
     {
-        $email = '';
+        $email = null;
         $vo = new EmailAddress($email, false);
 
         $this->assertNull($vo->value());
@@ -28,7 +28,6 @@ class EmailAddressTest extends TestCase
             'invalid string' => ['not an email address'],
             'array' => [[]],
             'object' => [new \stdClass],
-            'null' => [null],
         ];
     }
 

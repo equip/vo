@@ -11,7 +11,6 @@ class IdentifierTest extends TestCase
     {
         return [
             'integer' => [1],
-            'string' => ['2'],
             'octal' => [0x1a8], // 424
         ];
     }
@@ -25,21 +24,9 @@ class IdentifierTest extends TestCase
         $this->assertEquals($id, $vo->value());
     }
 
-    public function dataNullable()
+    public function testNullable()
     {
-        return [
-            'null' => [null],
-            'integer' => [0],
-            'string' => ['0'],
-        ];
-    }
-
-    /**
-     * @dataProvider dataNullable
-     */
-    public function testNullable($id)
-    {
-        $vo = new Identifier($id, false);
+        $vo = new Identifier(null, false);
         $this->assertNull($vo->value());
     }
 

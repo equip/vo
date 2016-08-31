@@ -4,6 +4,8 @@ namespace Equip\ValueObject;
 
 use InvalidArgumentException;
 
+use function Assert\that;
+
 class Identifier
 {
     /**
@@ -13,24 +15,13 @@ class Identifier
 
     public function __construct($id, $is_required = true)
     {
-        static $empty_values = [null, false, 0, '0', ''];
+        $assert = that($id);
 
-        if (in_array($id, $empty_values, true) && !$is_required) {
-            $id = null;
-        } else {
-            $options = [
-                'flags' => \FILTER_REQUIRE_SCALAR,
-                'options' => [
-                    'min_range' => 1,
-                ],
-            ];
-
-            if (filter_var($id, \FILTER_VALIDATE_INT, $options) === false) {
-                throw new InvalidArgumentException('Value must be a valid identifier');
-            }
-
-            $id = (int) $id;
+        if (!$is_required) {
+            $assert->nullOr();
         }
+
+        $assert->integer()->greaterThan(0);
 
         $this->id = $id;
     }

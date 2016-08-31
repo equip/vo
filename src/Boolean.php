@@ -4,21 +4,22 @@ namespace Equip\ValueObject;
 
 use InvalidArgumentException;
 
+use function Assert\that;
+
 class Boolean
 {
+    /**
+     * @var bool|null
+     */
     private $value;
 
     public function __construct($value, $default = null)
     {
-        static $empty_values = [null, ''];
-
-        if (is_bool($default) && in_array($value, $empty_values, true)) {
+        if ($value === null) {
             $value = $default;
         }
 
-        if (!is_scalar($value)) {
-            throw new InvalidArgumentException('Value must a possible boolean');
-        }
+        that($value)->nullOr()->scalar();
 
         $options = [
             'flags' => \FILTER_NULL_ON_FAILURE,
@@ -26,9 +27,7 @@ class Boolean
 
         $value = filter_var($value, \FILTER_VALIDATE_BOOLEAN, $options);
 
-        if ($value === null) {
-            throw new InvalidArgumentException('Value must be boolean');
-        }
+        that($value)->boolean();
 
         $this->value = $value;
     }
