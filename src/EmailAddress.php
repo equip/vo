@@ -11,6 +11,10 @@ class EmailAddress
      */
     private $email;
 
+    /**
+     * @param string|null $email
+     * @param boolean $is_required
+     */
     public function __construct($email, $is_required = true)
     {
         $assert = that($email);
@@ -24,6 +28,9 @@ class EmailAddress
         $this->email = $email;
     }
 
+    /**
+     * @return string|null
+     */
     public function value()
     {
         return $this->email;

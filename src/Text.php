@@ -11,6 +11,10 @@ class Text
      */
     private $value;
 
+    /**
+     * @param string|null $value
+     * @param string|null $regex
+     */
     public function __construct($value, $regex = null)
     {
         $assert = that($value)->nullOr()->string();
@@ -22,6 +26,9 @@ class Text
         $this->value = $value;
     }
 
+    /**
+     * @return string|null
+     */
     public function value()
     {
         return $this->value;

@@ -11,6 +11,10 @@ class Identifier
      */
     private $id;
 
+    /**
+     * @param int|null $id
+     * @param boolean $is_required
+     */
     public function __construct($id, $is_required = true)
     {
         $assert = that($id);
@@ -24,6 +28,9 @@ class Identifier
         $this->id = $id;
     }
 
+    /**
+     * @return int|null
+     */
     public function value()
     {
         return $this->id;

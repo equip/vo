@@ -11,6 +11,10 @@ class Boolean
      */
     private $value;
 
+    /**
+     * @param string|boolean|null $value
+     * @param string|boolean|null $default
+     */
     public function __construct($value, $default = null)
     {
         if ($value === null) {
@@ -30,6 +34,9 @@ class Boolean
         $this->value = $value;
     }
 
+    /**
+     * @return boolean
+     */
     public function value()
     {
         return $this->value;

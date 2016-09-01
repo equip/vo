@@ -13,6 +13,10 @@ class PhoneNumber
      */
     private $number;
 
+    /**
+     * @param string|null $number
+     * @param boolean $is_required
+     */
     public function __construct($number, $is_required = true)
     {
         static $empty_values = [null, ''];
@@ -35,6 +39,9 @@ class PhoneNumber
         $this->number = $number;
     }
 
+    /**
+     * @return string|null
+     */
     public function value()
     {
         if ($this->number) {
@@ -44,16 +51,25 @@ class PhoneNumber
         return null;
     }
 
+    /**
+     * @return PhoneNumberUtil
+     */
     protected function util()
     {
         return PhoneNumberUtil::getInstance();
     }
 
+    /**
+     * @return string
+     */
     protected function preferredRegion()
     {
         return PhoneNumberUtil::UNKNOWN_REGION;
     }
 
+    /**
+     * @return int
+     */
     protected function preferredFormat()
     {
         return PhoneNumberFormat::E164;
