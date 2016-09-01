@@ -2,8 +2,6 @@
 
 namespace Equip\ValueObject;
 
-use InvalidArgumentException;
-
 use function Assert\that;
 
 class Identifier
